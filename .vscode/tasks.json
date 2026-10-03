@@ -1,0 +1,65 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Initialize and push skylines",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"init",
+				";",
+				"git",
+				"branch",
+				"-M",
+				"main",
+				";",
+				"git",
+				"add",
+				".",
+				";",
+				"git",
+				"commit",
+				"-m",
+				"Initial commit",
+				";",
+				"git",
+				"remote",
+				"add",
+				"origin",
+				"https://github.com/bilalae/skylines.git",
+				";",
+				"git",
+				"push",
+				"-u",
+				"origin",
+				"main"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Clear Git lock",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-Command",
+				"Remove-Item -Force .git/index.lock"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Stop stuck Git process",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-Command",
+				"Get-Process git -ErrorAction SilentlyContinue | Stop-Process -Force"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		}
+	]
+}
